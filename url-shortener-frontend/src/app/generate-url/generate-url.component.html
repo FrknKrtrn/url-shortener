@@ -1,0 +1,27 @@
+<head>
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<div class="col-md-6 offset-md-3">
+    <h2>URL Shortener</h2>
+
+    <div class="container p-5 my-3" style="background-color: gainsboro;">
+        <form #shortenerForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <p>Enter the original URL below:</p>
+                <input [(ngModel)]="urlDto.url" type="text" class="form-control" name="originalUrl"
+                required #originalUrl="ngModel" [class.is-invalid]="originalUrl.invalid && originalUrl.touched">
+                <button [disabled]="shortenerForm.form.invalid" class="btn btn-primary" type="submit">Shorten URL</button>
+            </div>
+        </form>
+        <button (click)="clear()" class="btn btn-danger btn-sm float-end" type="submit">Clear</button>
+    </div>   
+    <div *ngIf="isGenerated" class="container p-3 my-3" style="background-color: mediumseagreen;">
+        <label>Your shortened URL is:</label>
+        <p><strong>{{url.shortenedUrl}}</strong></p>
+    </div>
+    <div>
+        <a (click)="goToUrlList()" type="button" class='btn btn-outline-success'><i class="fas fa-clipboard-list"></i>Show my all URLs</a>
+    </div>
+</div>

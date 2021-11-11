@@ -1,0 +1,26 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row col-md-8 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+    <a (click)="generateUrl()" class="btn btn-primary btn-xs"><b>+</b> Generate new URL</a>
+        <tr>
+            <th>Original URL</th>
+            <th>Shortened URL</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let url of urls">
+            <td> {{url.originalUrl}}</td>
+            <td> {{url.shortenedUrl}} </td>
+            <td class="text-center"><a class='btn btn-info btn-xs' (click)="redirectToOriginalUrl(url.id)"><span class="glyphicon glyphicon-share"></span>Visit</a> <a (click)="deleteUrl(url.id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>Delete</a></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
